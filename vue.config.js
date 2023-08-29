@@ -1,4 +1,16 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require("@vue/cli-service");
+
 module.exports = defineConfig({
-  transpileDependencies: true
-})
+  transpileDependencies: true,
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+    // proxy: {
+    //     '/API/Sema/V1': {
+    //         target: 'http://localhost:8080',
+    //         ws: true,
+    //         changeOrigin: true
+    //     }
+    // }
+  },
+});
