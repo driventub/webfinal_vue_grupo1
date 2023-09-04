@@ -7,25 +7,25 @@
             <h1 class="card-title text-center">Suscripción a la Carrera de Ingeniería Civil</h1>
             <form @submit.prevent="guardarSuscriptor">
               <div class="mb-3">
-                <label for="cedula" class="form-label">Cédula:</label>
+                <label for="cedula" class="form-label">Cédula</label>
                 <input v-model="cedula" type="number" id="cedula" class="form-control" placeholder="C.I." required>
               </div>
               <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre:</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input v-model="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" required>
               </div>
               <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido:</label>
+                <label for="apellido" class="form-label">Apellido</label>
                 <input v-model="apellido" type="text" id="apellido" class="form-control" placeholder="Apellido" required>
               </div>
               <div class="mb-3">
-                <label for="correo" class="form-label">Correo Electrónico:</label>
+                <label for="correo" class="form-label">Correo Electrónico</label>
                 <input v-model="correo" type="email" id="correo" class="form-control" placeholder="aaaa@correo.com"
                   required>
               </div>
               <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono:</label>
-                <input v-model="telefono" type="tel" id="telefono" class="form-control" placeholder="(+593)-000-000-000"
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input v-model="telefono" type="tel" id="telefono" class="form-control" placeholder="Telefono"
                   required>
               </div>
               <div class="mb-3">
@@ -42,8 +42,8 @@
   </div>
 
 
-  <h5 v-if="insertado">Estudiante suscrito exitosamente</h5>
-  <h5 v-if="noInsertado">El estudiante ya se ha suscrito</h5>
+  <h5 v-if="insertado" class="exitoso">Estudiante suscrito exitosamente</h5>
+  <h5 v-if="noInsertado" class="noExitoso">El estudiante ya se ha suscrito</h5>
   <!-- <h4>{{ identificar }}</h4> -->
 </template>
 
@@ -114,67 +114,29 @@ export default {
 </script>
 
 <style>
-/* .subscription-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+.exitoso {
+  border: 2px solid green;
+  border-radius: 5px; /* Agregar un borde redondeado */
+  color: green;
+  padding: 2% 10px; /* Añadir padding solo en los lados */
+  background-color: #daffda;
+  margin: 10px 10% 0; /* Margen arriba, margen izquierdo y derecho, sin margen abajo */
 }
 
-.subscription-form {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 100%;
-  max-width: 600px;
+.noExitoso {
+  border: 2px solid red;
+  border-radius: 5px; /* Agregar un borde redondeado */
+  color: red;
+  padding: 2% 10px; /* Añadir padding solo en los lados */
+  background-color: #ffdada;
+  margin: 0 10% 10px; /* Sin margen arriba, margen izquierdo y derecho, margen abajo */
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+/* Media queries para ajustar los estilos en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .exitoso, .noExitoso {
+    padding: 5px 10px; /* Reducir el padding en los márgenes superior e inferior */
+    margin: 10px 5% 10px; /* Margen arriba, margen izquierdo y derecho, margen abajo */
+  }
 }
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-.form-control {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.btn-primary {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-  margin-top: 50px;
-} */
 </style>
