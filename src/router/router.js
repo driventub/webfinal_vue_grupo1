@@ -14,6 +14,10 @@ const routes = [
     {
         path: "/ayuda",
         component: () => import('../components/modules/acercamiento/pages/Ayuda.vue'),
+    },
+    {
+        path: "/alert",
+        component: () => import('../components/modules/acercamiento/components/Alert.vue'),
     }
 ]
 

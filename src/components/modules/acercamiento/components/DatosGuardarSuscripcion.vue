@@ -1,34 +1,4 @@
 <template>
-
-<!-- <div class="container">
-    <h1>Suscripcion Carrera Ingenieria Civil</h1>
-    <div class="input-container">
-      <label for="cedula">Cédula</label>
-      <input v-model="cedula" type="text" id="cedula">
-    </div>
-    <div class="input-container">
-      <label for="nombre">Nombre</label>
-      <input v-model="nombre" type="text" id="nombre">
-    </div>
-    <div class="input-container">
-      <label for="apellido">Apellido</label>
-      <input v-model="apellido" type="text" id="apellido">
-    </div>
-    <div class="input-container">
-      <label for="apellido">correo</label>
-      <input v-model="correo" type="text" id="correo">
-    </div>
-    <div class="input-container">
-      <label for="apellido">telefono</label>
-      <input v-model="telefono" type="text" id="telefono">
-    </div>
-    <div class="input-container">
-      <label for="apellido">direccion</label>
-      <input v-model="direccion" type="text" id="direccion">
-    </div>
-    <button type="button" class="btn btn-outline-secondary" @click="guardarSuscriptor">Guardar</button>
-  </div> -->
-
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -38,29 +8,32 @@
             <form @submit.prevent="guardarSuscriptor">
               <div class="mb-3">
                 <label for="cedula" class="form-label">Cédula:</label>
-                <input v-model="cedula" type="text" id="cedula" class="form-control" required>
+                <input v-model="cedula" type="number" id="cedula" class="form-control" placeholder="C.I." required>
               </div>
               <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input v-model="nombre" type="text" id="nombre" class="form-control" required>
+                <input v-model="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" required>
               </div>
               <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input v-model="apellido" type="text" id="apellido" class="form-control" required>
+                <input v-model="apellido" type="text" id="apellido" class="form-control" placeholder="Apellido" required>
               </div>
               <div class="mb-3">
                 <label for="correo" class="form-label">Correo Electrónico:</label>
-                <input v-model="correo" type="email" id="correo" class="form-control" required>
+                <input v-model="correo" type="email" id="correo" class="form-control" placeholder="aaaa@correo.com"
+                  required>
               </div>
               <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono:</label>
-                <input v-model="telefono" type="tel" id="telefono" class="form-control" required>
+                <input v-model="telefono" type="tel" id="telefono" class="form-control" placeholder="(+593)-000-000-000"
+                  required>
               </div>
               <div class="mb-3">
                 <label for="direccion" class="form-label">Dirección:</label>
-                <input v-model="direccion" type="text" id="direccion" class="form-control" required>
+                <input v-model="direccion" type="text" id="direccion" class="form-control" placeholder="Dirección"
+                  required>
               </div>
-              <button type="submit" class="btn btn-primary btn-block" @click="guardarSuscriptor">Suscribirse</button>
+              <button type="submit" class="btn btn-primary btn-block">Suscribirse</button>
             </form>
           </div>
         </div>
@@ -68,95 +41,80 @@
     </div>
   </div>
 
+
+  <h5 v-if="insertado">Estudiante suscrito exitosamente</h5>
+  <h5 v-if="noInsertado">El estudiante ya se ha suscrito</h5>
+  <!-- <h4>{{ identificar }}</h4> -->
 </template>
 
 <script>
 import { agregarSuscripcionFachada } from "../helpers/SuscripcionCliente.js"
+import AlertVue from './Alert.vue';
 export default {
-    data() {
-        return {
-            cedula: null,
-            nombre: null,
-            apellido: null,
-            correo: null,
-            telefono: null,
-            direccion: null,
-            fechaSuscripcion: null,
-            estado: null
+  data() {
+    return {
+      cedula: null,
+      nombre: null,
+      apellido: null,
+      correo: null,
+      telefono: null,
+      direccion: null,
+      fechaSuscripcion: null,
+      estado: null,
+      insertado: false,
+      noInsertado: false
+      // identificar: false
 
-        };
-    },
-    methods: {
-        guardarSuscriptor() {
+    };
+  },
+  methods: {
+    async guardarSuscriptor() {
 
-          const fechaActual = new Date();
-        
-        // Obtiene la fecha y la hora en formato de cadena de texto compatible con ISO 8601
-          const fechaYHora = fechaActual.toISOString();
-            const data={
-                cedula:this.cedula,
-                nombre:this.nombre,
-                apellido:this.apellido,
-                correo:this.correo,
-                telefono:this.telefono,
-                direccion:this.direccion,
-                fechaSuscripcion:fechaYHora,
-                estado:"activo"
-            }
-            agregarSuscripcionFachada(data);
-            console.log('Estudiante insertado')
-            
-        },
+      const fechaActual = new Date();
+
+      // Obtiene la fecha y la hora en formato de cadena de texto compatible con ISO 8601
+      const fechaYHora = fechaActual.toISOString();
+
+      const data = {
+        cedula: this.cedula,
+        nombre: this.nombre,
+        apellido: this.apellido,
+        correo: this.correo,
+        telefono: this.telefono,
+        direccion: this.direccion,
+        fechaSuscripcion: fechaYHora,
+        estado: "activo"
+
+      }
+      const identificar = await agregarSuscripcionFachada(data)
+      console.log(identificar)
+      if (identificar) {
+        console.log('Estudiante insertado' + identificar[2])
+        this.insertado = true
+        this.noInsertado = false
+      } else {
+
+        console.log('Estudiante no insertado' + identificar[2])
+        this.noInsertado = true
+        this.insertado = false
+      }
+      this.limpiarCampos()
+
+    }, limpiarCampos() {
+      this.cedula = '',
+        this.nombre = '',
+        this.apellido = '',
+        this.correo = '',
+        this.telefono = '',
+        this.direccion = ''
     },
+    
+  }
 };
 </script>
 
 <style>
-/* .container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.input-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-label {
-  width: 100px;
-  margin-right: 10px;
-}
-
-input {
-  flex: 1;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-} */
-.subscription-container {
+/* .subscription-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,10 +170,11 @@ label {
 .btn-primary:hover {
   background-color: #0056b3;
 }
+
 .footer {
   background-color: #333;
   color: #fff;
   padding: 20px 0;
   margin-top: 50px;
-}
+} */
 </style>
