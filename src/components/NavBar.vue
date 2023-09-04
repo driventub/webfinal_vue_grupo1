@@ -10,7 +10,7 @@
           <li class="nav-item dropdown">
             <router-link class="nav-link dropdown-toggle" to="/suscribirse" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Noticias</router-link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <router-link class="dropdown-item" to="/terminos">Insertar</router-link>
+              <router-link class="dropdown-item" to="/noticias/insertar">Insertar</router-link>
               <router-link class="dropdown-item" to="/alert">Visualizar</router-link>
             </div>
           </li>
@@ -21,7 +21,8 @@
             <router-link class="nav-link dropdown-toggle" to="/suscribirse" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acercamiento al Estudiante</router-link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link class="dropdown-item" to="/terminos">Suscripcion</router-link>
-              <router-link class="dropdown-item" to="/ayuda">Quejas</router-link>              
+              <router-link class="dropdown-item" to="/principalQuejas">Quejas</router-link>   
+                         
             </div>
           </li>
         </ul>
