@@ -40,16 +40,12 @@
   }
   </script>
   
-  <style scoped>
-  /* div {
-      padding: 0 30px;
-      background-color: aliceblue;
-  
-  }
-  div a {
-      font-weight: bold;
-      /*color: #2c3e50;*/
-      /* color: #6576b4;
-      margin: 0 10px; */
-  /* } */ 
+  <style >
+  .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ajusta el valor según sea necesario para superponer otros elementos */
+}
   </style>
