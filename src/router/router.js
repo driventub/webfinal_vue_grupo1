@@ -18,6 +18,10 @@ const routes = [
     {
         path: "/alert",
         component: () => import('../components/modules/acercamiento/components/Alert.vue'),
+    },
+    {
+        path: "/principalQuejas",
+        component: () => import('../components/modules/quejas/pages/ConsultaQueja.vue'),
     }
 ]
 
