@@ -1,19 +1,23 @@
 <template>
-  <NavBar/>
-  <router-view/>
+  <NavBar />
+  <router-view />
+  <FooterSuscripcion/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import NavBar from './components/NavBar.vue';
-import GuardarSuscripcion from './components/modules/acercamiento/pages/GuardarSuscripcion.vue';
+import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "./components/NavBar.vue";
+import FooterSuscripcion from "./components/modules/acercamiento/components/FooterSuscripcion.vue";
+import GuardarSuscripcion from "./components/modules/acercamiento/pages/GuardarSuscripcion.vue";
+
 export default {
-  name: 'App',
+  name: "App",
   components: {
     GuardarSuscripcion,
-    NavBar
-  }
-}
+    NavBar,
+    FooterSuscripcion,
+  },
+};
 </script>
 
 <style>
@@ -23,6 +27,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
 }
 </style>

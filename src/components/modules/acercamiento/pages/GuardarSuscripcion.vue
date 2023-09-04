@@ -1,6 +1,5 @@
 <template>
   <DatosGuardarSuscripcion />
-  <FooterSuscripcion/>
 </template>
 
 <script>
