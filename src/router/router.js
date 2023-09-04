@@ -24,9 +24,15 @@ const routes = [
   {
     path: "/noticias/insertar",
     component: () =>
-      import("../components/modules/publicaciones/pages/NoticiasInsertarPage.vue"),
+      import(
+        "../components/modules/publicaciones/pages/NoticiasInsertarPage.vue"
+      ),
   },
-    
+  {
+    path: "/principalQuejas",
+    component: () =>
+      import("../components/modules/quejas/pages/ConsultaQueja.vue"),
+  },
 ];
 
 const router = createRouter({
