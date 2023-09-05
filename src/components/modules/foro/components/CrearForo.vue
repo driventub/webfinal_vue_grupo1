@@ -102,6 +102,12 @@ export default {
 console.log("para crear el foro, verificando status: "+response.status);
          if(response.status==200){
           this.enviarForo();
+          this.cedula= "";
+      this.anadir= "";
+      this.asunto="";
+      this.mensaje= "";
+      this.tag= "";
+
          }else{
           alert("No esxiste suscripcion, registrese por favor")
          }

@@ -59,6 +59,7 @@ export default {
       const response = await guardarComentarioPorForoFachada(data);
       if (response.status == 200) {
         alert("Comentario realizado");
+        this.comentario="";
       } else {
         alert("Comentario no realizado");
       }
