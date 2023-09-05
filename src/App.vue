@@ -1,18 +1,22 @@
 <template>
- <ForoPage/>
+  <NavBar/>
+  <router-view/>
+  <FooterSuscripcion/>
 </template>
 
 <script>
-import ForoPage from './components/modules/foro/page/ForoPage.vue'
-
+import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "./components/NavBar.vue";
+import FooterSuscripcion from "./components/modules/acercamiento/components/FooterSuscripcion.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    ForoPage
+    NavBar,
+    FooterSuscripcion
 
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -22,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
