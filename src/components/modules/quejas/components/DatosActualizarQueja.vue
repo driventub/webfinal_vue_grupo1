@@ -129,6 +129,9 @@ export default {
 </script>
 
 <style scoped>
+div{
+    margin-top: 1%;
+}
 input {
     margin-left: 5px;
     margin-right: 5px;

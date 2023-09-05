@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style scoped>
+div{
+    margin-top: 1%;
+}
 input {
     margin-left: 5px;
     margin-left: 5px;

@@ -168,6 +168,9 @@ export default {
 </script>
 
 <style scoped>
+div{
+  margin-top: 1%;
+}
 .buscar {
   margin: 10px;
 }
