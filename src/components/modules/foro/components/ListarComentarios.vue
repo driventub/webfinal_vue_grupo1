@@ -69,6 +69,7 @@ export default {
     this.cargarComentarios();
   },
 };
+
 </script>
 
 <style scoped>
