@@ -1,10 +1,13 @@
 <template>
+
+  
+
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
           <div class="card-body">
-            <h1>Crear Nueva Noticia</h1>
+            <h1>Nueva Noticia</h1>
             <form @submit.prevent="createNoticia">
               <!-- Title Input -->
               <div class="mb-3">
@@ -29,9 +32,33 @@
                 ></textarea>
               </div>
 
-              <!-- Drag-and-Drop Image Area -->
               <div class="mb-3">
-                <label class="form-label" for="imagen">Imagenes:</label>
+                <label class="form-label"
+                  >Seleccione el tipo de contenido:</label
+                >
+                <div>
+                  <input
+                    type="checkbox"
+                    id="showImageSection"
+                    v-model="noticia.mostrarImagen"
+                  />
+                  <label for="showImageSection">Imágenes</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    id="showVideoSection"
+                    v-model="noticia.mostrarVideo"
+                  />
+                  <label for="showVideoSection">Videos</label>
+                </div>
+              </div>
+
+              <!-- Drag-and-Drop Image Area -->
+              <div v-if="noticia.mostrarImagen" class="mb-3">
+                <label  class="form-label" for="imagen"
+                  >Imagenes:</label
+                >
 
                 <!-- Combined drag-and-drop and file input -->
                 <div class="dropzone" @drop="handleDrop" @dragover.prevent>
@@ -56,13 +83,19 @@
                 <ul>
                   <li v-for="(image, index) in noticia.imagen" :key="index">
                     {{ image.name }}
-                    <button type="button" class="btn btn-danger" @click="removeImage(index)">Eliminar</button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      @click="removeImage(index)"
+                    >
+                      Eliminar
+                    </button>
                   </li>
                 </ul>
               </div>
 
               <!-- Video URLs Input -->
-              <div class="mb-3">
+              <div v-if="noticia.mostrarVideo" class="mb-3">
                 <label class="form-label" for="urlVideo">Videos:</label>
                 <input
                   class="form-control"
@@ -70,21 +103,37 @@
                   id="urlVideo"
                   v-model="urlVideoInput"
                 />
-                <button type="button" class="btn btn-secondary" @click.prevent="addVideoUrl">Añadir Video URL</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  @click.prevent="addVideoUrl"
+                >
+                  Añadir Video URL
+                </button>
                 <ul>
                   <li
                     v-for="(videoUrl, index) in noticia.urlVideo"
                     :key="index"
                   >
                     {{ videoUrl }}
-                    <button type="button" class="btn btn-danger" @click="removeVideoUrl(index)">Eliminar</button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      @click="removeVideoUrl(index)"
+                    >
+                      Eliminar
+                    </button>
                   </li>
                 </ul>
               </div>
 
               <!-- Submit Button -->
-              <button class="btn btn-primary" type="submit">Crear Noticia</button>
+              <button class="btn btn-primary" type="submit">
+                Crear Noticia
+              </button>
+
             </form>
+            
           </div>
         </div>
       </div>
@@ -99,43 +148,38 @@ export default {
   data() {
     return {
       noticia: {
-        titulo: "", // Title property
-        descripcion: "", // Description property
-        imagen: [], // Array to store selected image files
-        urlVideo: [], // Array to store video URLs
+        titulo: "",
+        descripcion: "",
+        imagen: [],
+        urlVideo: [],
+        mostrarImagen: false,
+        mostrarVideo: false,
       },
-      urlVideoInput: "", // Temporary storage for input
+      urlVideoInput: "",
     };
   },
   methods: {
-    // Other methods
-
-    // Handle file drop event
     handleDrop(event) {
       event.preventDefault();
       const files = event.dataTransfer.files;
       this.addImages(files);
     },
 
-    // Handle file input change
     handleImageChange(event) {
       const files = event.target.files;
       this.addImages(files);
     },
 
-    // Add selected images to the noticia object
     addImages(files) {
       for (let i = 0; i < files.length; i++) {
         this.noticia.imagen.push(files[i]);
       }
     },
 
-    // Remove selected image by index
     removeImage(index) {
       this.noticia.imagen.splice(index, 1);
     },
 
-    // Add video URL to the noticia object
     addVideoUrl() {
       if (this.urlVideoInput.trim() !== "") {
         this.noticia.urlVideo.push(this.urlVideoInput);
@@ -143,45 +187,46 @@ export default {
       }
     },
 
-    // Remove video URL by index
     removeVideoUrl(index) {
       this.noticia.urlVideo.splice(index, 1);
     },
 
-    // Create Noticia (form submission)
     async createNoticia() {
       try {
-        // Build and send the FormData
+        if (
+          (this.noticia.mostrarImagen && this.noticia.imagen.length === 0) ||
+          (this.noticia.mostrarVideo && this.noticia.urlVideo.length === 0)
+        ) {
+          // Display an error message or take appropriate action
+          console.error("Required section is not filled.");
+          return;
+        }
+
         const formData = new FormData();
 
-        // Append noticia properties to the FormData
         formData.append("titulo", this.noticia.titulo);
         formData.append("descripcion", this.noticia.descripcion);
 
-        // Append each video URL to the FormData
         for (let i = 0; i < this.noticia.urlVideo.length; i++) {
           formData.append("urlVideo", this.noticia.urlVideo[i]);
         }
 
-        // Append selected image files to the FormData
         for (let i = 0; i < this.noticia.imagen.length; i++) {
           formData.append("imagen", this.noticia.imagen[i]);
         }
 
-        // Send the FormData to your API endpoint
         await insertarFachada(formData);
 
-        // Clear the form after successful submission
         this.noticia.titulo = "";
         this.noticia.descripcion = "";
         this.noticia.urlVideo = [];
         this.urlVideoInput = "";
         this.noticia.imagen = [];
+        this.mostrarImagen = false;
+        this.mostrarVideo = false;
 
-        // Optionally, display a success message or navigate to a different page
         console.log("Noticia created successfully.");
       } catch (error) {
-        // Handle errors, e.g., display an error message
         console.error("Error creating Noticia:", error);
       }
     },

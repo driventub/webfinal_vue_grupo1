@@ -28,6 +28,7 @@ const routes = [
         "../components/modules/publicaciones/pages/NoticiasInsertarPage.vue"
       ),
   },
+  ////parte de las quejas
   {
     path: "/noticias/ver",
     component: () =>
@@ -37,8 +38,24 @@ const routes = [
   },
   {
     path: "/principalQuejas",
+    path: "/quejas",
     component: () =>
       import("../components/modules/quejas/pages/ConsultaQueja.vue"),
+  },
+  {
+    path: "/quejas/insertar",
+    component: () =>
+      import("../components/modules/quejas/pages/GuardaQueja.vue"),
+  },
+  {
+    path: "/quejas/actualizar",
+    component: () =>
+      import("../components/modules/quejas/pages/ActualizarQueja.vue"),
+  },
+  {
+    path: "/quejas/eliminar",
+    component: () =>
+      import("../components/modules/quejas/pages/EliminarQueja.vue"),
   },
 ];
 

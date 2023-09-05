@@ -1,90 +1,138 @@
 <template>
-    <div v-if="!exito">
-        <label for="">A nombre de</label>
-        <input v-model="nombre" type="text" placeholder=" (opcional)"/>
-        
-        <label for="">Asunto</label>
-        <input v-model="asunto" type="text" placeholder=" asunto..."/>
-        
-        <div class="cuerpo">
-            <label for="">Cuerpo</label >
-            <div>
-                <textarea v-model="cuerpo" rows="5" cols="40" placeholder=" ingrese su queja aqui..."></textarea>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Crea una nueva Queja</h1>
+                        <div v-if="!exito">
+                            <label for="">A nombre de</label>
+                            <input v-model="nombre" type="text" placeholder=" (opcional)" />
+
+                            <label for="">Asunto</label>
+                            <input v-model="asunto" type="text" placeholder=" asunto..." />
+
+                            <div class="cuerpo">
+                                <label for="">Cuerpo</label>
+                                <div>
+                                    <textarea v-model="cuerpo" rows="5" cols="40"
+                                        placeholder=" ingrese su queja aqui..."></textarea>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-warning" @click="guardarQueja">Guardar</button>
+                            </div>
+
+                        </div>
+
+                        <div class="exitoso" v-if="exito">
+                            <h5>{{ mensaje }}</h5>
+                        </div>
+                        <div class="noExitoso" v-if="noExito">
+                            <h5>{{ mensaje }}</h5>
+                        </div>
+
+                        <div class="d-flex">
+                            <router-link class="btn btn-primary" to="/quejas" role="button">Volver</router-link>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div>
-            <button class="btn btn-warning" @click="guardarQueja">Guardar</button>
-        </div>
-
     </div>
-
-    <div v-if="exito">
-            <h1>{{ mensaje }}</h1>
-    </div>
-
 </template>
 
 <script>
 import { ingresarQuejaFachada } from '../helpers/QuejaCliente'
 
-    export default {
-        data(){
-            return{
-                asunto:null,
-                nombre:null,
-                cuerpo:null,
+export default {
+    data() {
+        return {
+            asunto: null,
+            nombre: null,
+            cuerpo: null,
 
-                mensaje:null,
-                exito: false
-            };
-        },
-        methods:{
+            mensaje: null,
+            exito: false,
+            noExito: false
+        };
+    },
+    methods: {
 
-            async guardarQueja(){
+        async guardarQueja() {
 
-                if(this.asunto===null || this.cuerpo===null){
-                    this.exito=true;
-                    this.mensaje='Queja no agregada: datos faltantes'
-                }else{
+            if (this.asunto === null || this.cuerpo === null) {
+                this.noExito = true;
+                this.mensaje = 'Queja no agregada: datos faltantes'
+            } else {
 
-                    if(this.nombre===null || this.nombre===''){
-                        this.nombre='Anónimo'
-                    }
+                if (this.nombre === null || this.nombre === '') {
+                    this.nombre = 'Anónimo'
+                }
 
-                    const data={
-                        nombre: this.nombre,
-                        cuerpo: this.cuerpo,
-                        asunto:this.asunto,
-                    }
+                const data = {
+                    nombre: this.nombre,
+                    cuerpo: this.cuerpo,
+                    asunto: this.asunto,
+                }
 
-                    try{
-                        ingresarQuejaFachada(data);
-                        this.exito=true;
-                        this.mensaje='Exito: Queja agregada de manera correcta'
-                    }catch(error){
-                        this.exito=true;
-                        this.mensaje=error+': Error de API'
-                    }
-
+                try {
+                    ingresarQuejaFachada(data);
+                    this.exito = true;
+                    this.mensaje = 'Exito: Queja agregada de manera correcta'
+                } catch (error) {
+                    this.noExito = true;
+                    this.mensaje = error + ': Error de API'
                 }
 
             }
-            
-        }
+
+        },
+
     }
+}
 </script>
 
 <style scoped>
+input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
-    input{
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+button {
+    margin-top: 10px;
+    font-size: large;
+    margin-bottom: 20px;
+}
 
-    button{
-        margin-top: 10px;
-        font-size: large;
-    }
+/* a {
+    margin-top: 20px;
 
+} */
+
+.exitoso {
+    border: 2px solid green;
+    border-radius: 5px;
+    /* Agregar un borde redondeado */
+    color: green;
+    padding: 2% 10px;
+    /* Añadir padding solo en los lados */
+    background-color: #daffda;
+    margin: 10px 10% 0;
+    /* Margen arriba, margen izquierdo y derecho, sin margen abajo */
+}
+
+.noExitoso {
+    border: 2px solid red;
+    border-radius: 5px;
+    /* Agregar un borde redondeado */
+    color: red;
+    padding: 2% 10px;
+    /* Añadir padding solo en los lados */
+    background-color: #ffdada;
+    margin: 0 10% 10px;
+    /* Sin margen arriba, margen izquierdo y derecho, margen abajo */
+}
 </style>
