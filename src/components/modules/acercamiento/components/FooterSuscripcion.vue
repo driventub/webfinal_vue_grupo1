@@ -22,4 +22,17 @@ export default {
   margin-top: 50px;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 5px 0;
+    font-size: 14px;
+  }
+}
 </style>
