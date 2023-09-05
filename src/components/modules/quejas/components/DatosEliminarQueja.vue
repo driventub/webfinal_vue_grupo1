@@ -4,9 +4,10 @@
             <div class="col-md-8">
                 <div class="card">
 
+                    <h1 class="card-title text-center">Verifica el id de una Queja y eliminala</h1>
                     <div class="card-body">
                         <label for="">Id</label>
-                        <input v-model="id" type="text" :disabled="isDisabled" />
+                        <input class="form-control" required v-model="id" type="number" :disabled="isDisabled" />
                         <button class="btn btn-warning" @click="consultaQueja">Verificar</button>
 
                         <div>
@@ -97,6 +98,11 @@ input {
 
 a{
     margin-top:50px
+}
+
+button {
+  font-size: large;
+  margin:20px;
 }
 
 .mensaje {

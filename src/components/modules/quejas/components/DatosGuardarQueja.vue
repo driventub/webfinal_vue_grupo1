@@ -7,16 +7,16 @@
                         <h1 class="card-title text-center">Crea una nueva Queja</h1>
                         <div v-if="!exito">
                             <label for="">A nombre de</label>
-                            <input v-model="nombre" type="text" placeholder=" (opcional)" />
+                            <input class="form-control" v-model="nombre" type="text" placeholder=" (opcional)" required/>
 
                             <label for="">Asunto</label>
-                            <input v-model="asunto" type="text" placeholder=" asunto..." />
+                            <input class="form-control" v-model="asunto" type="text" placeholder=" asunto..." required/>
 
                             <div class="cuerpo">
                                 <label for="">Cuerpo</label>
                                 <div>
-                                    <textarea v-model="cuerpo" rows="5" cols="40"
-                                        placeholder=" ingrese su queja aqui..."></textarea>
+                                    <textarea class="form-control" maxlength="250" v-model="cuerpo" rows="5" cols="40"
+                                        placeholder=" ingrese su queja aqui... (maximo 250 caracteres)" required></textarea>
                                 </div>
                             </div>
 
