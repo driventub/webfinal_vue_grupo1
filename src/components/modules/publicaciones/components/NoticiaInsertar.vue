@@ -60,6 +60,7 @@
                     ref="imageInput"
                     multiple
                     @change="handleImageChange"
+                    accept=".jpg, .jpeg, .png, .gif"
                     style="display: none"
                     required
                   />
@@ -122,7 +123,9 @@
                 Crear Noticia
               </button>
             </form>
-            <h2 v-if="noticiaInserted" class="text-success">Noticia insertada exitosamente.</h2>
+            <h2 v-if="noticiaInserted" class="text-success">
+              Noticia insertada exitosamente.
+            </h2>
           </div>
         </div>
       </div>
@@ -157,13 +160,31 @@ export default {
 
     handleImageChange(event) {
       const files = event.target.files;
-      this.addImages(files);
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        if (!this.isFileTypeAllowed(file)) {
+          alert("Tipo de archivo invalido.");
+
+          this.$refs.imageInput.value = "";
+          return;
+        }
+
+        this.addImage(file);
+      }
     },
 
-    addImages(files) {
-      for (let i = 0; i < files.length; i++) {
-        this.noticia.imagen.push(files[i]);
-      }
+    isFileTypeAllowed(file) {
+      const allowedExtensions = [".jpg", ".jpeg", ".png", ".gif"];
+
+      const extension = file.name.split(".").pop().toLowerCase();
+
+      return allowedExtensions.includes("." + extension);
+    },
+
+    addImage(file) {
+      this.noticia.imagen.push(file);
     },
 
     removeImage(index) {
