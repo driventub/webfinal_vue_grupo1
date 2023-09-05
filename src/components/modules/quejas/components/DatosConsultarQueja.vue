@@ -24,7 +24,7 @@
           <div class="card-body">
             <div class="buscar">
               <label for="">Id: </label>
-              <input v-model="id" type="text" />
+              <input class="form-control" v-model="id" type="text" />
               <button class="btn btn-warning" @click="consultaQueja">Consultar</button>
             </div>
             <div class="exitoso" v-if="exito">
@@ -68,16 +68,16 @@
 
             <div v-if="buscando" class="resto">
               <label for="">Nombre</label>
-              <input v-model="nombre" type="text" readonly />
+              <input class="form-control" v-model="nombre" type="text" readonly />
               <label for="">Asunto</label>
-              <input v-model="asunto" type="text" readonly />
+              <input class="form-control" v-model="asunto" type="text" readonly />
               <label for="">Fecha ingreso</label>
-              <input v-model="fecha" readonly />
+              <input class="form-control" v-model="fecha" readonly />
 
               <div class="cuerpo">
                 <label for="">Cuerpo</label>
                 <div>
-                  <textarea v-model="cuerpo" rows="5" cols="40" readonly></textarea>
+                  <textarea class="form-control" v-model="cuerpo" rows="5" cols="40" readonly></textarea>
                 </div>
               </div>
 
@@ -179,6 +179,7 @@ input {
 
 button {
   font-size: large;
+  margin:20px;
 }
 
 .cuerpo {
