@@ -8,20 +8,19 @@
         <div>
           <div class="noticia" v-for="noticia in noticias" :key="noticia.id">
             <div class="card">
-            
-                <div  class="card-header">
-                  <h5>{{ noticia.titulo }}</h5>
-                </div>
-                <div class="card-text">
-                  <p>{{ noticia.descripcion }}</p>
-                </div>
+              <div class="card-header">
+                <h5>{{ noticia.titulo }}</h5>
+              </div>
+              <div class="card-text">
+                <p>{{ noticia.descripcion }}</p>
+              </div>
 
-          
               <div class="imagenVideo">
                 <ul>
                   <div v-for="imagen in noticia.urlImagen" :key="imagen">
-                    <h5 v-on="imprimirRuta(imagen)" ></h5>
-                    <img src="imagen" alt="Imagen" />
+                    <h5 v-on="imprimirRuta(imagen)"></h5>
+                    <img :src="imprimirRuta(imagen)"  alt="Imagen" />
+                   
                   </div>
                 </ul>
                 <ul>
@@ -35,9 +34,7 @@
                       allowfullscreen
                     ></iframe>
                   </div>
-
                   </div>
-                  
                 </ul>
               </div>
             </div>
@@ -55,7 +52,7 @@ export default {
   data() {
     return {
       noticias: [],
-      listaimagenes:[],
+      listaimagenes: [],
     };
   },
   methods: {
@@ -64,9 +61,11 @@ export default {
       return `https://www.youtube.com/embed/${videoId}`;
     },
 
-    imprimirRuta(imagen){
-      console.log("AQUI ESTA LA IMAGEN: "+imagen);
-    }
+    imprimirRuta(imagen) {
+      const imagenUrl = `http://localhost:8080/API/v1.0/Civil/${imagen}`
+      console.log(imagenUrl);
+      return  imagenUrl
+    },
   },
 
   mounted() {
@@ -82,7 +81,6 @@ export default {
 </script>
 
 <style scope>
-
 h5 {
   font-family: "Times New Roman", Times, serif;
   text-align: justify;
