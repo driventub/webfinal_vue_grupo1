@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <button @click="anadirForo">Añadir un nuevo tema de debate</button>
+      <button type="button" class="btn btn-primary" @click="anadirForo">Añadir un nuevo tema de debate</button>
     </div>
   </div>
 </template>

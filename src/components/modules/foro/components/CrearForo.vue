@@ -1,8 +1,8 @@
 <template>
   <div v-if="isMostrar">
-    <div>
-      <label for="cedula">Cedula</label>
-      <input type="text" v-model="cedula" required @input="validarCedula" />
+    <div class="mb-3">
+      <label class="form-label" for="cedula">Cedula</label>
+      <input class="form-control" type="text" v-model="cedula" required @input="validarCedula" />
       <div
         v-if="mostrarMensajeCedula"
         class="mensaje-validacion"
@@ -11,12 +11,12 @@
         {{ mensajeCedula }}
       </div>
     </div>
-    <div>
-      <label for="asunto">Tema</label>
-      <input type="text" v-model="asunto" required />
+    <div class="mb-3">
+      <label class="form-label" for="asunto">Tema</label>
+      <input class="form-control" type="text" v-model="asunto" required />
     </div>
     <div class="form-floating">
-      <label for="floatingTextarea">Mensaje</label>
+      <label class="form-label" for="floatingTextarea">Mensaje</label>
       <textarea
         id="floatingTextarea"
         class="form-control"
@@ -25,14 +25,14 @@
         required
       ></textarea>
     </div>
-    <div>
-      <label for="tag">Tag</label>
-      <input v-model="tag" required />
+    <div class="mb-3">
+      <label class="form-label" for="tag">Tag</label>
+      <input class="form-control" v-model="tag" required />
     </div>
 
     <div>
-      <button @click="validarExistenciaDeSuscriptor">Enviar al foro</button>
-      <button @click="cancelar">Cancelar</button>
+      <button type="button" class="btn btn-primary" @click="validarExistenciaDeSuscriptor">Enviar al foro</button>
+      <button type="button" class="btn btn-danger" @click="cancelar">Cancelar</button>
     </div>
   </div>
 </template>
