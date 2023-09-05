@@ -4,11 +4,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title text-center">Edita aqui tus quejas</h1>
+                        <h1 class="card-title text-center">Edita aqui tus Quejas</h1>
                         <div v-if="!exito">
                             <div>
                                 <label for="">Id</label>
-                                <input v-model="id" type="text" :disabled="isDisabled" placeholder="ingrese un id..." />
+                                <input class="form-control" v-model="id" type="number" :disabled="isDisabled" placeholder="ingrese un id..." />
                             </div>
 
                             <div class="botonConsulta">
@@ -16,15 +16,15 @@
                             </div>
 
                             <label for="">Nombre</label>
-                            <input v-model="nombre" type="text" />
+                            <input class="form-control" v-model="nombre" type="text"/>
 
                             <label for="">Asunto</label>
-                            <input v-model="asunto" type="text" />
+                            <input class="form-control" v-model="asunto" type="text"/>
 
                             <div class="cuerpo">
                                 <label for="">Cuerpo</label>
                                 <div>
-                                    <textarea v-model="cuerpo" rows="5" cols="40"></textarea>
+                                    <textarea class="form-control" required maxlength="250" v-model="cuerpo" rows="5" cols="40"></textarea>
                                 </div>
                             </div>
 
