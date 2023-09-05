@@ -8,14 +8,13 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import NavBar from "./components/NavBar.vue";
 import FooterSuscripcion from "./components/modules/acercamiento/components/FooterSuscripcion.vue";
-import GuardarSuscripcion from "./components/modules/acercamiento/pages/GuardarSuscripcion.vue";
 
 export default {
   name: "App",
   components: {
-    GuardarSuscripcion,
     NavBar,
-    FooterSuscripcion,
+    FooterSuscripcion
+
   },
 };
 </script>
