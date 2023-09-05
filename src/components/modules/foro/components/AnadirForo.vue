@@ -12,6 +12,7 @@
       required />
     </div>
 
+    
     <div>
       <button class="btn btn-outline-primary" @click="anadirForo">Añadir un nuevo tema de debate</button>
     </div>
