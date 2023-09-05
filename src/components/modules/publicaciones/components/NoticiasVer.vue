@@ -18,7 +18,7 @@
               <div class="imagenVideo">
                 <ul>
                   <div v-for="imagen in noticia.urlImagen" :key="imagen">
-                    <h5 v-on="imprimirRuta(imagen)"></h5>
+                    
                     <img :src="imprimirRuta(imagen)"  alt="Imagen" />
                    
                   </div>

@@ -1,7 +1,4 @@
 <template>
-
-  
-
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -9,7 +6,6 @@
           <div class="card-body">
             <h1>Nueva Noticia</h1>
             <form @submit.prevent="createNoticia">
-              <!-- Title Input -->
               <div class="mb-3">
                 <label class="form-label" for="titulo">Título:</label>
                 <input
@@ -21,7 +17,6 @@
                 />
               </div>
 
-              <!-- Description Input -->
               <div class="mb-3">
                 <label class="form-label" for="descripcion">Descripción:</label>
                 <textarea
@@ -54,13 +49,9 @@
                 </div>
               </div>
 
-              <!-- Drag-and-Drop Image Area -->
               <div v-if="noticia.mostrarImagen" class="mb-3">
-                <label  class="form-label" for="imagen"
-                  >Imagenes:</label
-                >
+                <label class="form-label" for="imagen">Imagenes:</label>
 
-                <!-- Combined drag-and-drop and file input -->
                 <div class="dropzone" @drop="handleDrop" @dragover.prevent>
                   <input
                     class="form-control"
@@ -70,6 +61,7 @@
                     multiple
                     @change="handleImageChange"
                     style="display: none"
+                    required
                   />
                   <p>
                     Arrastre y suelte aquí o
@@ -79,7 +71,6 @@
                   </p>
                 </div>
 
-                <!-- Display selected images -->
                 <ul>
                   <li v-for="(image, index) in noticia.imagen" :key="index">
                     {{ image.name }}
@@ -94,7 +85,6 @@
                 </ul>
               </div>
 
-              <!-- Video URLs Input -->
               <div v-if="noticia.mostrarVideo" class="mb-3">
                 <label class="form-label" for="urlVideo">Videos:</label>
                 <input
@@ -102,6 +92,7 @@
                   type="text"
                   id="urlVideo"
                   v-model="urlVideoInput"
+                  required
                 />
                 <button
                   type="button"
@@ -127,13 +118,10 @@
                 </ul>
               </div>
 
-              <!-- Submit Button -->
               <button class="btn btn-primary" type="submit">
                 Crear Noticia
               </button>
-
             </form>
-            
           </div>
         </div>
       </div>
