@@ -26,11 +26,11 @@
           },
           {
             id: 1, 
-            url: 'https://aka-cdn.uce.edu.ec/ares/w/facs/fing/imagenes%20y%20pdf/facultad/11897051_691458450985171_1278794561_n.jpg'
+            url: 'https://www.ecuavisa.com/binrepository/1272x600/36c0/1200d600/none/11705/GAGA/uce-1_667252_20221028071925.jpg'
           },
           {
             id: 2, 
-            url: 'https://aka-cdn.uce.edu.ec/ares/w/facs/fing/imagenes%20y%20pdf/facultad/11897051_691458450985171_1278794561_n.jpg'
+            url: 'https://2.bp.blogspot.com/-Sdf5RRm_Y9Y/VdyAt9vCykI/AAAAAAAAIT4/ZE05pnB-2uQ/s1600/20150819%2BE%2BResis.JPG'
           }
         ],
         index: 0
