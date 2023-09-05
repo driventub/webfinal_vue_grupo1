@@ -67,6 +67,12 @@ const routes = [
     component: () =>
       import("../components/modules/quejas/pages/EliminarQueja.vue"),
   },
+  {
+    path:"/foro",
+    component:()=> import('../components/modules/foro/page/ForoPage.vue')
+
+  }
+
 ];
 
 const router = createRouter({

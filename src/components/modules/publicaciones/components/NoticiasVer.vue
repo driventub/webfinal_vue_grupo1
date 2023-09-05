@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style scope>
+.container{
+  margin-top: 5%;
+}
 h3{
   font-size: 3vw;
 }
