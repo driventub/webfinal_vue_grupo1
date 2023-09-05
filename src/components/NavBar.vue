@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav" >
           <li class="nav-item dropdown">
-            <router-link class="nav-link dropdown-toggle" to="/noticias" id="navbarDropdownMenuNoticias" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Noticias</router-link>
+            <router-link class="nav-link dropdown-toggle" to="/noticias/insertar" id="navbarDropdownMenuNoticias" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Noticias</router-link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuNoticias">
               <router-link class="dropdown-item" to="/noticias/insertar">Insertar</router-link>
               <router-link class="dropdown-item" to="/noticias/ver">Visualizar</router-link>

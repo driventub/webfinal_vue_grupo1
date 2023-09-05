@@ -100,6 +100,7 @@ export default {
   methods: {
     async guardarSuscriptor() {
       const fechaActual = new Date();
+      fechaActual.setHours(fechaActual.getHours() - 5);
       const fechaYHora = fechaActual.toISOString();
 
       const data = {

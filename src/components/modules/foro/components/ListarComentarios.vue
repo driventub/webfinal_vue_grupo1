@@ -1,9 +1,9 @@
 <template>
   <div
-    v-for="c in listaComents" :key="c.id" class="containerComentarios"
+    v-for="(c,index) in listaComents" :key="c.id" class="containerComentarios"
   >
     <div>
-      <label>{{ devoverlSus(c.id)}} </label>
+      <label>{{ nombres[index]}} </label>
       <br />
       <label>{{ c.mensaje }}</label>
       <br />
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       listaComents: [],
-      nombress:null,
+      nombres:[],
     };
   },
   methods: {
@@ -57,6 +57,11 @@ export default {
         this.idTemaForo
       );
       this.listaComents = response.data;
+
+      // Obtener los nombres en paralelo
+      const nombresPromises = this.listaComents.map(comentario => obtenerSuscriptorPorIdComentFachada(comentario.id));
+      const nombresResponses = await Promise.all(nombresPromises);
+      this.nombres = nombresResponses.map(response => response.data.nombre+" "+response.data.apellido);
 
     },
     async devoverlSus(id){
