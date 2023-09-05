@@ -17,6 +17,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/suscribirse">Foro al Estudiante</router-link>
           </li>          
+          <li class="nav-item">
+            <router-link class="nav-link" to="/foro">Foro</router-link>
+          </li>  
           <li class="nav-item dropdown">
             <router-link class="nav-link dropdown-toggle" to="/suscribirse" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acercamiento al Estudiante</router-link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -29,8 +32,6 @@
       </div>
       </div>      
     </nav>
-
-  
   </template>
   
   <script >

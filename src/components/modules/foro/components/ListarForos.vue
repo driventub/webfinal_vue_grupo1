@@ -31,8 +31,6 @@
 <script>
 import {
   listarForosFachada,
-  eliminarTemaPorIdFachada,
-  verificarParaEliminarFachada,
 } from "../helpers/ForoCliente";
 import { formatearFecha } from "../helpers/Utilities";
 import EditarConfirmacion from "./EditarConfirmacion.vue";

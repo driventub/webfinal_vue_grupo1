@@ -11,7 +11,6 @@ export const guardarComentarioPorForoFachada=(comentario)=>{
 const obtenerComentariosPorIdForo= async(id)=>{
     try{
     const response = await axios.get(`http://localhost:8080/API/v1.0/Civil/discuciones/${id}`);
-    console.log("Obteniendo datos comentarios en cliente: "+response.data[0]);
     return response;
     }catch(error){
          console.log(error);

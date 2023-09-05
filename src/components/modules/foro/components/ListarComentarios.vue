@@ -1,12 +1,16 @@
 <template>
-  <div v-for="c in listaComents" :key="c.id" class="containerComentarios">
-     <div>
-        <label>estu: {{ c.estudiante }}</label>
-        <br>
-        <label>mensaje: {{ c.mensaje }}</label>
-        <br>
-        <label>fecha :{{ c.fecha }}</label>
-     </div>
+  <div
+    v-for="(c, index) in listaComents"
+    :key="c.id"
+    class="containerComentarios"
+  >
+    <div>
+      <label>estu: {{ c.suscriptor }}</label>
+      <br />
+      <label>mensaje: {{ c.mensaje }}</label>
+      <br />
+      <label>fecha :{{ c.fecha }}</label>
+    </div>
 
     <div>
       <div class="like-dislike">
@@ -23,42 +27,46 @@
         </button>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
-import { obtenerComentariosPorIdForoFachada } from '../helpers/ComentariosCliente';
+import { obtenerComentariosPorIdForoFachada } from "../helpers/ComentariosCliente";
 
 export default {
   props: {
-    idTemaForo:{
-        type:Number,
-        require:true,
-    }
+    idTemaForo: {
+      type: Number,
+      require: true,
+    },
   },
-  data(){
-    return{
-        listaComents:[]
-    }
+  data() {
+    return {
+      listaComents: [],
+    };
   },
-  methods:{
-         async cargarComentarios(){
-            console.log("id del tema: "+this.idTemaForo);
-            const response = await obtenerComentariosPorIdForoFachada(this.idTemaForo);
-            this.listaComents=response.data;
-         }
-  },
-  mounted(){
-    this.cargarComentarios();
-  }
+  methods: {
+    async cargarComentarios() {
+      console.log("id del tema: " + this.idTemaForo);
+      const response = await obtenerComentariosPorIdForoFachada(
+        this.idTemaForo
+      );
+      this.listaComents = response.data;
 
+      for (let i = 0; i < this.listaComents.length; i++) {
+        console.log("sus "+this.listaComents[0]);
+      }
+      
+    },
+  },
+  mounted() {
+    this.cargarComentarios();
+  },
 };
 </script>
 
 <style scoped>
-.containerComentarios{
+.containerComentarios {
   border: 1px solid blanchedalmond;
   margin: 10px;
 }
