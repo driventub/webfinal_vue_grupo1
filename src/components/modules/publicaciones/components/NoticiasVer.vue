@@ -70,7 +70,7 @@ export default {
     },
 
     imprimirRuta(imagen) {
-      const imagenUrl = `http://localhost:8080/API/v1.0/Civil${imagen}`
+      const imagenUrl = `http://localhost:8080/API/v1.0/Civil/${imagen}`
       console.log(imagenUrl);
       return  imagenUrl
     },
