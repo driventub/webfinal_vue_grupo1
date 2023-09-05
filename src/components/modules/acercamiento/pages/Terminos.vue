@@ -1,21 +1,105 @@
 <template>
-   <div class="container mt-5">
+  <div class="container">
     <div class="row">
-      <div class="col-md-8 mx-auto">
+      <div class="col-md-8 offset-md-2">
         <h1 class="text-center">Términos y Condiciones</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat purus vitae sapien cursus, ut vehicula erat dapibus.
-          Integer eget sollicitudin velit, id rhoncus erat. Quisque congue ipsum a ex gravida, ac bibendum lorem hendrerit.
-        </p>
-        <p>
-          Suspendisse potenti. Nullam luctus velit eu nulla aliquet, vel dictum est fermentum. Vestibulum efficitur erat vel dui tempus,
-          at laoreet justo lacinia. Sed vel bibendum odio, vel posuere est. Duis interdum orci sed malesuada facilisis.
-        </p>
-        <!-- Continuar con el contenido de los términos y condiciones -->
+        <h2 class="text-justify">INFORMACIÓN RELEVANTE</h2>
+
+        <p class="text-justify"><strong>Requisito necesario:</strong> Para adquirir los productos que ofrecemos en este
+          sitio, es necesario que
+          lea y acepte los siguientes Términos y Condiciones que se describen a continuación. El uso de nuestros
+          servicios, así como la compra de nuestros productos, implicará que usted ha leído y aceptado los Términos y
+          Condiciones de Uso en el presente documento.</p>
+
+        <p class="text-justify">Todos los productos ofrecidos en nuestro sitio web pueden ser creados, cobrados, enviados
+          o presentados por una
+          página web tercera, en cuyo caso estarán sujetos a sus propios Términos y Condiciones. En algunos casos, para
+          adquirir un producto, será necesario el registro por parte del usuario, con ingreso de datos personales
+          fidedignos y definición de una contraseña.</p>
+
+        <p class="text-justify">El usuario puede elegir y cambiar la clave para su acceso de administración de la cuenta
+          en cualquier momento,
+          en caso de que se haya registrado y que sea necesario para la compra de alguno de nuestros productos. No
+          asumimos responsabilidad en caso de que entregue dicha clave a terceros.</p>
+
+        <p class="text-justify">Todas las compras y transacciones realizadas a través de este sitio web están sujetas a un
+          proceso de
+          confirmación y verificación, que podría incluir la verificación del stock y disponibilidad del producto,
+          validación de la forma de pago, validación de la factura (en caso de existir) y el cumplimiento de las
+          condiciones requeridas por el medio de pago seleccionado. En algunos casos, puede que se requiera una
+          verificación por correo electrónico.</p>
+
+        <p class="text-justify">Los precios de los productos ofrecidos en esta Tienda Online son válidos solamente en las
+          compras realizadas en
+          este sitio web.</p>
+
+        <h2 class="text-center">LICENCIA</h2>
+
+        <p class="text-justify">A través de su sitio web, concedemos una licencia para que los usuarios utilicen los
+          productos que son vendidos
+          de acuerdo a los Términos y Condiciones que se describen en este documento.</p>
+
+        <h2 class="text-center">USO NO AUTORIZADO</h2>
+
+        <p class="text-justify">En caso de que aplique (para venta de software, plantillas u otro producto de diseño y
+          programación), usted no
+          puede colocar uno de nuestros productos, modificado o sin modificar, en un CD, sitio web o ningún otro medio y
+          ofrecerlos para la redistribución o la reventa de ningún tipo.</p>
+
+        <h2 class="text-center">PROPIEDAD</h2>
+
+        <p class="text-justify">No puede declarar propiedad intelectual o exclusiva sobre ninguno de nuestros productos,
+          modificado o sin
+          modificar. Todos los productos son propiedad de los proveedores del contenido. En caso de que no se especifique
+          lo contrario, nuestros productos se proporcionan sin ningún tipo de garantía, expresa o implícita. En ningún
+          caso esta compañía será responsable de ningún daño, incluyendo, pero no limitado a, daños directos, indirectos,
+          especiales, fortuitos o consecuentes, u otras pérdidas resultantes del uso o de la imposibilidad de utilizar
+          nuestros productos.</p>
+
+        <h2 class="text-center">POLÍTICA DE REEMBOLSO Y GARANTÍA</h2>
+
+        <p class="text-justify">En el caso de productos que sean mercancías irrevocables no tangibles, no realizamos
+          reembolsos después de que
+          se envíe el producto. Usted tiene la responsabilidad de entender antes de comprarlo. Le pedimos que lea
+          cuidadosamente antes de comprarlo. Hacemos solamente excepciones con esta regla cuando la descripción no se
+          ajusta al producto. Hay algunos productos que pudieran tener garantía y posibilidad de reembolso, pero esto será
+          especificado al comprar el producto. En tales casos, la garantía solo cubrirá fallas de fábrica y solo se hará
+          efectiva cuando el producto se haya usado correctamente. La garantía no cubre averías o daños ocasionados por
+          uso indebido. Los términos de la garantía están asociados a fallas de fabricación y funcionamiento en
+          condiciones normales de los productos, y solo se harán efectivos estos términos si el equipo ha sido usado
+          correctamente. Esto incluye:</p>
+
+        <ul>
+          <li>De acuerdo a las especificaciones técnicas indicadas para cada producto.</li>
+          <li>En condiciones ambientales acorde con las especificaciones indicadas por el fabricante.</li>
+          <li>En uso específico para la función con que fue diseñado de fábrica.</li>
+          <li>En condiciones de operación eléctricas acorde con las especificaciones y tolerancias indicadas.</li>
+        </ul>
+
+        <h2 class="text-center">COMPROBACIÓN ANTIFRAUDE</h2>
+
+        <p class="text-justify">La compra del cliente puede ser aplazada para la comprobación antifraude. También puede
+          ser suspendida por más
+          tiempo para una investigación más rigurosa, para evitar transacciones fraudulentas.</p>
+
+        <h2 class="text-center">PRIVACIDAD</h2>
+
+        <p class="text-justify">Este sitio garantiza que la información personal que usted envía cuenta con la seguridad
+          necesaria. Los datos
+          ingresados por el usuario o en el caso de requerir una validación de los pedidos no serán entregados a terceros,
+          salvo que deba ser revelada en cumplimiento a una orden judicial o requerimientos legales.</p>
+
+        <p class="text-justify">La suscripción a boletines de correos electrónicos publicitarios es voluntaria y podría
+          ser seleccionada al
+          momento de crear su cuenta.</p>
+
+        <p class="text-justify">Reservamos los derechos de cambiar o de modificar estos términos sin previo aviso.</p>
+
+        <p class="text-justify">Estos términos y condiciones se han generado en terminosycondicionesdeusoejemplo.com.</p>
+
       </div>
     </div>
-  </div>
-</template>
+</div></template>
 
 <script>
 export default {
@@ -23,6 +107,14 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container{
+  margin-top: 5%;
+}
+li{
+  text-align: justify;
+}
+p{
+  text-align: justify;
+}
 </style>

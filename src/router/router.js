@@ -2,6 +2,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
+    path: "/civil",
+    component: () =>
+      import("../pages/HomeCivil.vue"),
+  },
+  {
     path: "/suscribirse",
     component: () =>
       import("../components/modules/acercamiento/pages/GuardarSuscripcion.vue"),
