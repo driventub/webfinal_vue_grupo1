@@ -18,19 +18,18 @@
               </div>
 
               <div class="mb-3">
-                <label class="form-label" for="descripcion">Descripción:</label>
-                <textarea
-                  class="form-control"
-                  id="descripcion"
-                  v-model="noticia.descripcion"
-                  required
-                ></textarea>
-              </div>
-
-              <div class="mb-3">
                 <label class="form-label"
                   >Seleccione el tipo de contenido:</label
                 >
+                <div>
+                  <input
+                    type="checkbox"
+                    id="showDescSection"
+                    v-model="noticia.mostrarDesc"
+                  />
+                  <label for="showDescSection">Descripción</label>
+                </div>
+
                 <div>
                   <input
                     type="checkbox"
@@ -49,6 +48,16 @@
                 </div>
               </div>
 
+              <div v-if="noticia.mostrarDesc" class="mb-3">
+                <label class="form-label" for="descripcion">Descripción:</label>
+                <textarea
+                  class="form-control"
+                  id="descripcion"
+                  v-model="noticia.descripcion"
+                  required
+                ></textarea>
+              </div>
+
               <div v-if="noticia.mostrarImagen" class="mb-3">
                 <label class="form-label" for="imagen">Imagenes:</label>
                 <h7>Tamaño máximo de archivos: 10MB</h7>
@@ -60,6 +69,7 @@
                     ref="imageInput"
                     multiple
                     @change="handleImageChange"
+                    accept=".jpg, .jpeg, .png, .gif"
                     style="display: none"
                     required
                   />
@@ -122,6 +132,9 @@
                 Crear Noticia
               </button>
             </form>
+            <h2 v-if="noticiaInserted" class="text-success">
+              Noticia insertada exitosamente.
+            </h2>
           </div>
         </div>
       </div>
@@ -140,8 +153,10 @@ export default {
         descripcion: "",
         imagen: [],
         urlVideo: [],
+        mostrarDesc: false,
         mostrarImagen: false,
         mostrarVideo: false,
+        insertado: false,
       },
       urlVideoInput: "",
     };
@@ -155,13 +170,31 @@ export default {
 
     handleImageChange(event) {
       const files = event.target.files;
-      this.addImages(files);
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        if (!this.isFileTypeAllowed(file)) {
+          alert("Tipo de archivo invalido.");
+
+          this.$refs.imageInput.value = "";
+          return;
+        }
+
+        this.addImage(file);
+      }
     },
 
-    addImages(files) {
-      for (let i = 0; i < files.length; i++) {
-        this.noticia.imagen.push(files[i]);
-      }
+    isFileTypeAllowed(file) {
+      const allowedExtensions = [".jpg", ".jpeg", ".png", ".gif"];
+
+      const extension = file.name.split(".").pop().toLowerCase();
+
+      return allowedExtensions.includes("." + extension);
+    },
+
+    addImage(file) {
+      this.noticia.imagen.push(file);
     },
 
     removeImage(index) {
@@ -185,8 +218,7 @@ export default {
           (this.noticia.mostrarImagen && this.noticia.imagen.length === 0) ||
           (this.noticia.mostrarVideo && this.noticia.urlVideo.length === 0)
         ) {
-          
-          console.error("Seccion requerida no llenada");
+          alert("Seccion requerida no llenada");
           return;
         }
 
@@ -212,10 +244,12 @@ export default {
         this.noticia.imagen = [];
         this.mostrarImagen = false;
         this.mostrarVideo = false;
+        this.mostrarDesc = false;
 
+        this.noticiaInserted = true;
         console.log("Noticia creada exitosamente.");
       } catch (error) {
-        console.error("Error al crear Noticia:", error);
+        alert("Error al crear Noticia:", error);
       }
     },
   },
