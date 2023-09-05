@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const obtenerFachada = () =>
 {
+    console.log(obtener());
     return obtener();
 };
 

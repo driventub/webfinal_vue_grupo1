@@ -29,6 +29,13 @@ const routes = [
       ),
   },
   {
+    path: "/noticias/ver",
+    component: () =>
+      import(
+        "../components/modules/publicaciones/pages/NoticiasVerPage.vue"
+      ),
+  },
+  {
     path: "/principalQuejas",
     component: () =>
       import("../components/modules/quejas/pages/ConsultaQueja.vue"),

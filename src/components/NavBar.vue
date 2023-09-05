@@ -11,7 +11,7 @@
             <router-link class="nav-link dropdown-toggle" to="/suscribirse" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">  Noticias</router-link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link class="dropdown-item" to="/noticias/insertar">Insertar</router-link>
-              <router-link class="dropdown-item" to="/alert">Visualizar</router-link>
+              <router-link class="dropdown-item" to="/noticias/ver">Visualizar</router-link>
             </div>
           </li>
           <li class="nav-item">
