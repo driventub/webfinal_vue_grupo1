@@ -1,7 +1,7 @@
 <template>
   <TemaDetalle :idTemaBuscar="idTema"></TemaDetalle>
-  <Comentario :idTem="idTema"></Comentario>
-  <ListarComentarios :idTemaForo="idTema"></ListarComentarios>
+  <Comentario :idTem="idTema" @cedulaComentario="recibirCedul"></Comentario>
+  <ListarComentarios :idTemaForo="idTema" :cedula="cedulEn"></ListarComentarios>
 </template>
 
 <script>
@@ -10,13 +10,24 @@ import ListarComentarios from '../components/ListarComentarios.vue';
 import TemaDetalle from '../components/TemaDetalle.vue';
 
 export default {
+  data(){
+    return{
+       cedulEn:null,
+    }
+  },
     props:{
        idTema:{
         type: Number,
         required:true
        }
     },
-    components: { TemaDetalle, Comentario, ListarComentarios }
+    components: { TemaDetalle, Comentario, ListarComentarios },
+    methods:{
+      recibirCedul(cedula){
+         this.cedulEn = cedula;
+      }
+    }
+
 }
 </script>
 

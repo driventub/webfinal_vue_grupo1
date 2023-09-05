@@ -68,6 +68,7 @@ export default {
          console.log("para crear el foro, verificando status: "+response.status); 
          if(response.status==200){
            this.comentar();
+           this.$emit("cedulaComentario",this.cedula);
          }else{
           alert("No esxiste suscripcion, registrese por favor")
          }

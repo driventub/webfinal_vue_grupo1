@@ -1,15 +1,13 @@
 <template>
   <div
-    v-for="(c, index) in listaComents"
-    :key="c.id"
-    class="containerComentarios"
+    v-for="c in listaComents" :key="c.id" class="containerComentarios"
   >
     <div>
-      <label>estu: {{ c.suscriptor }}</label>
+      <label>{{ devoverlSus(c.id)}} </label>
       <br />
-      <label>mensaje: {{ c.mensaje }}</label>
+      <label>{{ c.mensaje }}</label>
       <br />
-      <label>fecha :{{ c.fecha }}</label>
+      <label>{{ c.fecha }}</label>
     </div>
 
     <div>
@@ -31,7 +29,9 @@
 </template>
 
 <script>
-import { obtenerComentariosPorIdForoFachada } from "../helpers/ComentariosCliente";
+import { obtenerComentariosPorIdForoFachada,obtenerSuscriptorPorIdComentFachada } from "../helpers/ComentariosCliente";
+
+import { obtenerSuscripcionFachada } from "../../acercamiento/helpers/SuscripcionCliente";
 
 export default {
   props: {
@@ -39,25 +39,31 @@ export default {
       type: Number,
       require: true,
     },
+    cedula:{
+      type:String,
+      required:true
+    }
   },
   data() {
     return {
       listaComents: [],
+      nombress:null,
     };
   },
   methods: {
     async cargarComentarios() {
-      console.log("id del tema: " + this.idTemaForo);
+      console.log("id del tema en listar comentarios: " + this.idTemaForo);
       const response = await obtenerComentariosPorIdForoFachada(
         this.idTemaForo
       );
       this.listaComents = response.data;
 
-      for (let i = 0; i < this.listaComents.length; i++) {
-        console.log("sus "+this.listaComents[0]);
-      }
-      
     },
+    async devoverlSus(id){
+        const response = await obtenerSuscriptorPorIdComentFachada(id);
+          console.log("response->> "+response.data.nombre);
+          return response.data.nombre;        
+    }
   },
   mounted() {
     this.cargarComentarios();
