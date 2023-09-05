@@ -15,7 +15,7 @@ const agregarSuscripcion=async(body)=>{
 
 const obtenerSuscripcion=async(cedula)=>{
 
-    const data=await fetch(`http://localhost:8080/API/V1.0/Civil/suscriptores/${cedula}`).then(r =>r.json());
+    const data=await axios.get(`http://localhost:8080/API/v1.0/Civil/suscriptores/${cedula}`).then(r=>r.data);
     console.log(data);
     return data;
 }

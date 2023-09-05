@@ -71,7 +71,7 @@
                     @change="handleImageChange"
                     accept=".jpg, .jpeg, .png, .gif"
                     style="display: none"
-                    required
+                    
                   />
                   <p>
                     Arrastre y suelte aquí o
@@ -102,7 +102,7 @@
                   type="text"
                   id="urlVideo"
                   v-model="urlVideoInput"
-                  required
+                  
                 />
                 <button
                   type="button"
