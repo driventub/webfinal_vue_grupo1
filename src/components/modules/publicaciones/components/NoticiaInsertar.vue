@@ -51,7 +51,7 @@
 
               <div v-if="noticia.mostrarImagen" class="mb-3">
                 <label class="form-label" for="imagen">Imagenes:</label>
-
+                <h7>Tamaño máximo de archivos: 10MB</h7>
                 <div class="dropzone" @drop="handleDrop" @dragover.prevent>
                   <input
                     class="form-control"
