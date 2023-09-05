@@ -19,7 +19,7 @@
       </div>
    
     <div>
-      <button @click="validarComentar">Comentar</button>
+      <button class="btn btn-success" @click="validarComentar">Comentar</button>
     </div>
    
   </div>
@@ -104,6 +104,8 @@ export default {
 .contenedorComentario {
   display: flex;
   justify-content: center;
-  border: 1px solid orange;
+  border: 1px solid rgb(85, 85, 85);
+  padding: 10px;
+  border-radius: 15px;
 }
 </style>

@@ -3,11 +3,11 @@
     v-for="(c,index) in listaComents" :key="c.id" class="containerComentarios"
   >
     <div>
-      <label>{{ nombres[index]}} </label>
+      <label class="nombresss">{{ nombres[index]}} </label>
       <br />
-      <label>{{ c.mensaje }}</label>
+      <label class="sms">{{ c.mensaje }}</label>
       <br />
-      <label>{{ c.fecha }}</label>
+      <label class="fechaCx">{{ formatoFecha(c.fecha) }}</label>
     </div>
 
     <div>
@@ -30,7 +30,7 @@
 
 <script>
 import { obtenerComentariosPorIdForoFachada,obtenerSuscriptorPorIdComentFachada } from "../helpers/ComentariosCliente";
-
+import { formatearFecha } from "../helpers/Utilities";
 import { obtenerSuscripcionFachada } from "../../acercamiento/helpers/SuscripcionCliente";
 
 export default {
@@ -58,7 +58,6 @@ export default {
       );
       this.listaComents = response.data;
 
-      // Obtener los nombres en paralelo
       const nombresPromises = this.listaComents.map(comentario => obtenerSuscriptorPorIdComentFachada(comentario.id));
       const nombresResponses = await Promise.all(nombresPromises);
       this.nombres = nombresResponses.map(response => response.data.nombre+" "+response.data.apellido);
@@ -68,7 +67,10 @@ export default {
         const response = await obtenerSuscriptorPorIdComentFachada(id);
           console.log("response->> "+response.data.nombre);
           return response.data.nombre;        
-    }
+    },
+    formatoFecha(fecha) {
+      return formatearFecha(fecha);
+    },
   },
   mounted() {
     this.cargarComentarios();
@@ -79,7 +81,19 @@ export default {
 
 <style scoped>
 .containerComentarios {
-  border: 1px solid blanchedalmond;
+  padding: 10px;
+  border: 1px solid rgb(152, 152, 152);
   margin: 10px;
+  border-radius: 10px;
+}
+
+.nombresss{
+  font-size: 1.2vw;
+}
+.sms{
+  font-size: 0.9vw;
+}
+.fechaCx{
+  font-size: 0.6vw;
 }
 </style>

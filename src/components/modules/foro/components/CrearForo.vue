@@ -1,8 +1,8 @@
 <template>
-  <div v-if="isMostrar">
-    <div>
+  <div v-if="isMostrar" class="container">
+    <div class="input-group mb-3">
       <label for="cedula">Cedula</label>
-      <input type="text" v-model="cedula" required @input="validarCedula" />
+      <input class="form-control" type="text" v-model="cedula" required @input="validarCedula" />
       <div
         v-if="mostrarMensajeCedula"
         class="mensaje-validacion"
@@ -13,11 +13,11 @@
     </div>
     <div>
       <label for="asunto">Tema</label>
-      <input type="text" v-model="asunto" required />
+      <input class="form-control" type="text" v-model="asunto" required />
     </div>
     <div class="form-floating">
       <label for="floatingTextarea">Mensaje</label>
-      <textarea
+      <textarea 
         id="floatingTextarea"
         class="form-control"
         placeholder="Leave a comment here"
@@ -27,12 +27,12 @@
     </div>
     <div>
       <label for="tag">Tag</label>
-      <input v-model="tag" required />
+      <input class="form-control" v-model="tag" required />
     </div>
 
-    <div>
-      <button @click="validarExistenciaDeSuscriptor">Enviar al foro</button>
-      <button @click="cancelar">Cancelar</button>
+    <div class="botones">
+      <button class="btn btn-primary" @click="validarExistenciaDeSuscriptor">Enviar al foro</button>
+      <button type="button" class="btn btn-outline-secondary" @click="cancelar">Cancelar</button>
     </div>
   </div>
 </template>
@@ -124,4 +124,13 @@ console.log("para crear el foro, verificando status: "+response.status);
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.botones{
+  padding: 10px;
+
+}
+.botones button{
+  margin: 5px;
+}
+
+</style>

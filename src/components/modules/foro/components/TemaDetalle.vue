@@ -1,11 +1,11 @@
 <template>
   <div class="containerTema">
     <div>
-      <div>
-        <h2>{{ tema }}</h2>
-        <h3>sms{{ mensaje }}</h3>
-        <h3>{{ formatoFecha(fechaCreacion) }}</h3>
-        <h3>{{ numComent }} Comentarios</h3>
+      <div class="datos">
+        <span class="asunto">{{ tema }}</span>
+        <span class="sms">{{ mensaje }}</span>
+        <span class="fechaC">{{ formatoFecha(fechaCreacion) }}</span>
+        <span class="num">{{ numComent }} Comentarios</span>
 
       </div>
       <div>
@@ -65,7 +65,32 @@ export default {
 
 <style scoped>
 .containerTema{
-border: 1px solid blue;
+border: 1px solid rgb(118, 118, 118);
+border-radius: 15px;
+margin: 10px;
+}
+.asunto{
+  font-size: 2vw;
+  font-weight: bold;
+}
+.sms{
+  font-size: 1.5vw;
+}
+
+.fechaC{
+  color: rgb(126, 125, 125);
+  font-size: 0.7vw;
+}
+
+.datos{
+  display: flex;
+  justify-content: center;
+  display: grid;
+  align-items: center;
+}
+
+.num{
+  color: rgb(4, 203, 103);
 }
 
 </style>

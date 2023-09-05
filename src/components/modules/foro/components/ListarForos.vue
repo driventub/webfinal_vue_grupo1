@@ -85,9 +85,7 @@ export default {
     },
     editarTema(cedula,id) {
       this.$emit("idEditTema",cedula,id);
-    },
-
-    
+    }, 
     formatoFecha(fecha) {
       return formatearFecha(fecha);
     },
