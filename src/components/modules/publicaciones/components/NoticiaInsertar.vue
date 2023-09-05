@@ -185,8 +185,8 @@ export default {
           (this.noticia.mostrarImagen && this.noticia.imagen.length === 0) ||
           (this.noticia.mostrarVideo && this.noticia.urlVideo.length === 0)
         ) {
-          // Display an error message or take appropriate action
-          console.error("Required section is not filled.");
+          
+          console.error("Seccion requerida no llenada");
           return;
         }
 
@@ -213,9 +213,9 @@ export default {
         this.mostrarImagen = false;
         this.mostrarVideo = false;
 
-        console.log("Noticia created successfully.");
+        console.log("Noticia creada exitosamente.");
       } catch (error) {
-        console.error("Error creating Noticia:", error);
+        console.error("Error al crear Noticia:", error);
       }
     },
   },
