@@ -1,4 +1,7 @@
 <template>
+
+  <slider/>
+
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
@@ -22,7 +25,14 @@
 </template>
 
 <script>
+
+import slider   from '../components/Slider.vue';
+
 export default {
+
+  components: {
+    slider,
+  },
 
   data() {
     return {

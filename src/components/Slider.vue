@@ -1,17 +1,17 @@
 <template>
     <div ref="slideContainer" class="slide-container">
       <img 
-        v-for="image in images"
-        :key="image.id"
-        :src="image.url"
+        v-for="image in images" 
+        :key="image.id" 
+        :src="image.url" 
         :class="{ active: index === image.id }" 
         class="slide"
       >
     </div>
   
     <div class="buttons">
-      <button @click="slidePrev">Anterior</button>
-      <button @click="slideNext">Siguiente</button>
+      <button class="btn btn-secondary" @click="slidePrev">Anterior</button>
+      <button class="btn btn-secondary" @click="slideNext">Siguiente</button>
     </div>
   </template>
   
@@ -52,24 +52,41 @@
   </script>
   
   <style>
-
-.slide-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* overflow-x: hidden; */
+.slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-  .slide {
-    top: 50%;
-    left: 50%;
-    width: 700px;
-    height: 300px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+.slide {
+    width: 500px; 
+  height: 300px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+button{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+@media (max-width: 550px) {
+    .slide {
+    width: 100%;
+    height: auto; 
+  }
+  .buttons {
+    flex-direction: column;
   }
   
-  .slide.active {
-    opacity: 1;
+  button {
+    margin: 10px 0;
   }
-  </style>
+}
+</style>
