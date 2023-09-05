@@ -1,15 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js ddApp"/>
+ <ForoPage/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ForoPage from './components/modules/foro/page/ForoPage.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ForoPage
+
   }
 }
 </script>
