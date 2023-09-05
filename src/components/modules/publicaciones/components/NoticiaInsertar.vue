@@ -122,6 +122,7 @@
                 Crear Noticia
               </button>
             </form>
+            <h2 v-if="noticiaInserted" class="text-success">Noticia insertada exitosamente.</h2>
           </div>
         </div>
       </div>
@@ -142,6 +143,7 @@ export default {
         urlVideo: [],
         mostrarImagen: false,
         mostrarVideo: false,
+        insertado: false,
       },
       urlVideoInput: "",
     };
@@ -185,8 +187,7 @@ export default {
           (this.noticia.mostrarImagen && this.noticia.imagen.length === 0) ||
           (this.noticia.mostrarVideo && this.noticia.urlVideo.length === 0)
         ) {
-          
-          console.error("Seccion requerida no llenada");
+          windos.alert("Seccion requerida no llenada");
           return;
         }
 
@@ -213,9 +214,10 @@ export default {
         this.mostrarImagen = false;
         this.mostrarVideo = false;
 
+        this.noticiaInserted = true;
         console.log("Noticia creada exitosamente.");
       } catch (error) {
-        console.error("Error al crear Noticia:", error);
+        windos.alert("Error al crear Noticia:", error);
       }
     },
   },
