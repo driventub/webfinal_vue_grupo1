@@ -18,19 +18,18 @@
               </div>
 
               <div class="mb-3">
-                <label class="form-label" for="descripcion">Descripción:</label>
-                <textarea
-                  class="form-control"
-                  id="descripcion"
-                  v-model="noticia.descripcion"
-                  required
-                ></textarea>
-              </div>
-
-              <div class="mb-3">
                 <label class="form-label"
                   >Seleccione el tipo de contenido:</label
                 >
+                <div>
+                  <input
+                    type="checkbox"
+                    id="showDescSection"
+                    v-model="noticia.mostrarDesc"
+                  />
+                  <label for="showDescSection">Descripción</label>
+                </div>
+
                 <div>
                   <input
                     type="checkbox"
@@ -47,6 +46,16 @@
                   />
                   <label for="showVideoSection">Videos</label>
                 </div>
+              </div>
+
+              <div v-if="noticia.mostrarDesc" class="mb-3">
+                <label class="form-label" for="descripcion">Descripción:</label>
+                <textarea
+                  class="form-control"
+                  id="descripcion"
+                  v-model="noticia.descripcion"
+                  required
+                ></textarea>
               </div>
 
               <div v-if="noticia.mostrarImagen" class="mb-3">
@@ -144,6 +153,7 @@ export default {
         descripcion: "",
         imagen: [],
         urlVideo: [],
+        mostrarDesc: false,
         mostrarImagen: false,
         mostrarVideo: false,
         insertado: false,
@@ -208,7 +218,7 @@ export default {
           (this.noticia.mostrarImagen && this.noticia.imagen.length === 0) ||
           (this.noticia.mostrarVideo && this.noticia.urlVideo.length === 0)
         ) {
-          windos.alert("Seccion requerida no llenada");
+          alert("Seccion requerida no llenada");
           return;
         }
 
@@ -234,11 +244,12 @@ export default {
         this.noticia.imagen = [];
         this.mostrarImagen = false;
         this.mostrarVideo = false;
+        this.mostrarDesc = false;
 
         this.noticiaInserted = true;
         console.log("Noticia creada exitosamente.");
       } catch (error) {
-        windos.alert("Error al crear Noticia:", error);
+        alert("Error al crear Noticia:", error);
       }
     },
   },
