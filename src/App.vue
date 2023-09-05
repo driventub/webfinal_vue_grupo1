@@ -27,4 +27,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+body{
+  color: #1f2328;
+}
 </style>

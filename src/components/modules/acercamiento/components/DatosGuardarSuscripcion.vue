@@ -81,73 +81,6 @@
 import { agregarSuscripcionFachada, obtenerSuscripcionFachada } from "../helpers/SuscripcionCliente.js"
 import AlertVue from './Alert.vue';
 export default {
-  // data() {
-  //   return {
-  //     suscriptor: [],
-  //     cedula: null,
-  //     nombre: null,
-  //     apellido: null,
-  //     correo: null,
-  //     telefono: null,
-  //     direccion: null,
-  //     fechaSuscripcion: null,
-  //     estado: null,
-  //     insertado: false,
-  //     noInsertado: false
-  //     // identificar: false
-
-  //   };
-  // },
-  // methods: {
-  //   async guardarSuscriptor() {
-
-  //     const fechaActual = new Date();
-
-  //     // Obtiene la fecha y la hora en formato de cadena de texto compatible con ISO 8601
-  //     const fechaYHora = fechaActual.toISOString();
-
-  //     const data = {
-  //       cedula: this.cedula,
-  //       nombre: this.nombre,
-  //       apellido: this.apellido,
-  //       correo: this.correo,
-  //       telefono: this.telefono,
-  //       direccion: this.direccion,
-  //       fechaSuscripcion: fechaYHora,
-  //       estado: "activo"
-
-  //     }
-  //     const identificar = await agregarSuscripcionFachada(data)
-  //     console.log(identificar)
-  //     if (identificar) {
-  //       console.log('Estudiante insertado' + identificar[2])
-  //       this.insertado = true
-  //       this.noInsertado = false
-  //     } else {
-
-  //       console.log('Estudiante no insertado' + identificar[2])
-  //       this.noInsertado = true
-  //       this.insertado = false
-  //     }
-  //     this.limpiarCampos()
-
-  //     try {
-  //       const cedula = this.cedula; // Reemplaza con la cédula que desees
-  //       const response = await obtenerSuscripcionFachada(cedula);
-  //       this.suscriptor = [response]; // Almacenamos los datos en el array usuarios
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-
-  //   }, limpiarCampos() {
-  //     this.cedula = '',
-  //       this.nombre = '',
-  //       this.apellido = '',
-  //       this.correo = '',
-  //       this.telefono = '',
-  //       this.direccion = ''
-  //   },
-  // }
   data() {
     return {
       suscriptor: [],
@@ -216,6 +149,10 @@ export default {
 </script>
 
 <style>
+
+body{
+  margin-top: 5%;
+}
 .exitoso {
   border: 2px solid green;
   border-radius: 5px;
