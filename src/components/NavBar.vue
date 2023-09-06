@@ -22,6 +22,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <router-link class="dropdown-item" to="/suscribirse">Suscripcion</router-link>
               <router-link class="dropdown-item" to="/quejas">Quejas</router-link>   
+              <router-link class="dropdown-item" to="/profesor">Profesor</router-link>   
                          
             </div>
           </li>

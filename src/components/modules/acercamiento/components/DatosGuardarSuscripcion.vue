@@ -33,6 +33,13 @@
                 <input v-model="direccion" type="text" id="direccion" class="form-control" placeholder="Dirección"
                   required>
               </div>
+
+              <div class="mb-3">
+                <label for="url" class="form-label">Video Presentacion:</label>
+                <input v-model="url" type="text" id="url" class="form-control" placeholder="Video de presentaciòn url..."
+                  required>
+              </div>
+
               <button type="submit" class="btn btn-primary btn-block">Suscribirse</button>
             </form>
           </div>
@@ -58,6 +65,7 @@
         <th scope="col">Direccion</th>
         <th scope="col">Fecha</th>
         <th scope="col">Estado</th>
+        <th scope="col">Video</th>
       </tr>
     </thead>
     <tbody>
@@ -71,6 +79,12 @@
         <td>{{ sus.direccion }}</td>
         <td>{{ sus.fechaSuscripcion }}</td>
         <td>{{ sus.estado }}</td>
+        <td><iframe
+          class="embed-responsive-item mx-auto d-block"
+            :src="convertToEmbedUrl(sus.url)"
+            title="YouTube video"
+            allowfullscreen
+          ></iframe></td>
       </tr>
 
     </tbody>
@@ -94,10 +108,16 @@ export default {
       estado: null,
       insertado: false,
       noInsertado: false,
-      tablaSuscriptor: false
+      tablaSuscriptor: false,
+      url:null
     };
   },
   methods: {
+
+    convertToEmbedUrl(watchUrl) {
+      const videoId = watchUrl.split("v=")[1];
+      return `https://www.youtube.com/embed/${videoId}`;
+    },
     async guardarSuscriptor() {
       const fechaActual = new Date();
       fechaActual.setHours(fechaActual.getHours() - 5);
@@ -111,6 +131,7 @@ export default {
         telefono: this.telefono,
         direccion: this.direccion,
         fechaSuscripcion: fechaYHora,
+        url:this.url,
         estado: "activo"
       };
 

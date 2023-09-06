@@ -71,8 +71,13 @@ const routes = [
     path:"/foro",
     component:()=> import('../components/modules/foro/page/ForoPage.vue')
 
-  }
+  },
 
+  {
+    path: "/profesor",
+    component: () =>
+      import("../components/modules/acercamiento/components/Profesor.vue"),
+  },
 ];
 
 const router = createRouter({
